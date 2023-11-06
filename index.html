@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bespoke Worktop Designer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="row py-3 mx-3">
+        <div class="col-md-2 div1">
+            <br />
+            <div style="display:inline-flex;align-items: center;">
+            <h4>Worktop Details</h4>&nbsp;&nbsp;&nbsp;<a href="" onclick="window.location.reload();">Reset</a></div>
+            <!-- <div class="form-group">
+                <label for="fileInput" class="formLabel">Add Texture</label>
+                <input type="file" class="form-control textBoxes" id="fileInput">
+            </div> -->
+            <div class="form-group">
+                <label for="rangeSelect" class="formLabel">Select Worktop Range</label>
+                <select class="form-control textBoxes" id="rangeSelect" onchange="loadColourDropdown()">
+                    <option value="minerva">Minerva</option>
+                    <option value="maia">Maia</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="colourSelect" class="formLabel">Select Colour</label>
+                <select class="form-control textBoxes" id="colourSelect" onchange="loadColourPreview()">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="colourPreview" class="formLabel">Colour Preview</label>
+                <div class="form-control textBoxes" style="min-height:90px;">
+                    <img id="colourPreview" style="height:70px;width:inherit;object-fit: cover;display: none;"
+                        onerror="hideImg()" />
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="widthInput" class="formLabel">Enter Width</label>
+                <input type="number" class="form-control textBoxes" id="widthInput" value="2100">
+            </div>
+            <div class="form-group">
+                <label for="lengthInput" class="formLabel">Enter Length</label>
+                <input type="number" class="form-control textBoxes" id="lengthInput" value="900">
+            </div>
+            <!-- <div class="form-group">
+                <label for="thicknessInput" class="formLabel">Enter Thickness</label>
+                <input type="number" class="form-control textBoxes" id="thicknessInput" value="25">
+            </div> -->
+            <div class="form-group">
+                <label for="borderRadiusInput" class="formLabel">Curve</label>
+                <input type="number" class="form-control textBoxes" id="borderRadiusInput" value="200" max="250">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input class="form-check-input" type="checkbox" value="" id="backLeft" checked>
+                        <label class="form-check-label" for="backLeft">
+                            Back Left
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-check-input" type="checkbox" value="" id="backRight" checked>
+                        <label class="form-check-label" for="backRight">
+                            Back Right
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input class="form-check-input" type="checkbox" value="" id="frontLeft" checked>
+                        <label class="form-check-label" for="frontLeft">
+                            Front Left
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-check-input" type="checkbox" value="" id="frontRight" checked>
+                        <label class="form-check-label" for="frontRight">
+                            Front Right
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sinkRequiredSelect" class="formLabel">Sink Required</label>
+                <select class="form-control textBoxes" id="sinkRequiredSelect">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <!-- <div class="form-group">
+                <label for="sinkRequiredSelect" class="formLabel">Recess Area</label>
+                <select class="form-control textBoxes" id="recessAreaSelect">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div> -->
+            <div class="form-group">
+                <label for="topInput" class="formLabel">Position from Back</label>
+                <input type="number" class="form-control textBoxes" id="topInput" value="" disabled>
+                <label for="leftInput" class="formLabel">Position from Left</label>
+                <input type="number" class="form-control textBoxes" id="leftInput" value="" disabled>
+            </div>
+            <div class="form-group">
+                <h5>Edging</h5>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="formLabel">Left Edge</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="leftEdge" id="leftEdgeYes" checked>
+                            <label class="form-check-label" for="leftEdgeYes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="leftEdge" id="leftEdgeNo">
+                            <label class="form-check-label" for="leftEdgeNo">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="formLabel">Back Edge</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="backEdge" id="backEdgeYes" checked>
+                            <label class="form-check-label" for="backEdgeYes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="backEdge" id="backEdgeNo">
+                            <label class="form-check-label" for="backEdgeNo">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="formLabel">Right Edge</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="rightEdge" id="rightEdgeYes" checked>
+                            <label class="form-check-label" for="rightEdgeYes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="rightEdge" id="rightEdgeNo">
+                            <label class="form-check-label" for="rightEdgeNo">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="formLabel">Front Edge</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="frontEdge" id="frontEdgeYes" checked>
+                            <label class="form-check-label" for="frontEdgeYes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="frontEdge" id="frontEdgeNo">
+                            <label class="form-check-label" for="frontEdgeNo">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button id="addWorktop" class="btn btn-primary" onclick="CreateWorktop()">Create Worktop</button>
+            <br />
+        </div>
+        <div class="col-md-10 div2">
+            <br />
+            <div class="row" id="mainCanvasDiv">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h4>Worktop View</h4>
+                    </div>
+                    <div class="col-md-2">
+                        <div>
+                            <label for="adjustView" class="form-label"><b>Adjust View</b> - <span
+                                    id="percentValue"></span></label>
+                            <input type="range" class="form-range" min="1" max="10" step="1" value="5" id="adjustView"
+                                onchange="loadAdjustViewLabel()">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div style="display: flex;justify-content: flex-end;" id="toggleControls">
+                        <label>
+                            <input type="checkbox" id="toggleGrid" checked> Show Grid
+                        </label>
+                        <label>
+                            <input type="checkbox" id="toggleJoin" checked> Show Join
+                        </label>
+                        <label>
+                            <input type="checkbox" id="toggleSinkBoundary" checked> Show Sink Boundary
+                        </label>
+                    </div>
+                </div>
+                <span class="directionLabels">Back</span>
+                <div style="display: flex;">
+                    <div style="display: flex;align-items: center;margin-right: 10px;">
+                        <span class="directionLabels vertical">Left</span>
+                    </div>
+                    <div id="canvasDiv">
+                        <div id="innerCanvasDiv">
+                            <div class='hruler' id="ruler"></div>
+                            <div class='vruler' id="vruler"></div>
+                            <div id="konvaContainer"></div>
+                        </div>
+                    </div>
+                    <div style="display: flex;align-items: center;">
+                        <span class="directionLabels vertical">Right</span>
+                    </div>
+                </div>
+                <span class="directionLabels">Front</span>
+            </div>
+
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

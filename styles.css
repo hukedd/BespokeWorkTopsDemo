@@ -1,0 +1,148 @@
+input, button{
+    margin:20px;
+}
+
+label.formLabel{
+    font-weight: 500;
+}
+
+button{
+    margin-top: 10px !important;
+}
+
+.div1,.div2{
+    border: 1px solid lightgrey;
+    padding-bottom: 120px;
+    /* height: max-content; */
+}
+
+.div1{
+     /* max-height: 96vh; */
+     overflow: scroll;
+}
+
+
+#mainCanvasDiv{
+    height: 665px;
+}
+
+#canvasDiv{
+    padding:10px;
+    /* min-height: 600px; */
+    height: 750px;
+    width: inherit;
+    overflow: scroll;
+    background-color: rgb(236, 235, 233);
+}
+
+.hruler {
+    position: relative;
+    top:0; left:0;
+    width: max-content; 
+    height: 25px;
+    /* background: #eee;  */
+    color: #000;
+    font-family: arial;
+    font-size: 12px; line-height: 14px;
+    margin-bottom: 10px;
+    z-index: 9;
+    margin-left: 25px;
+}
+.vruler {
+    position: relative;
+    /* top:580px; left:-570px; */
+    width: max-content; 
+    height: 25px;
+    /* background: #eee;  */
+    color: #000;
+    font-family: arial;
+    font-size: 12px; line-height: 14px;
+    margin-bottom: 10px;
+    z-index: 9;   
+    transform: rotate(90deg);
+}
+.hruler > div {
+    display: inline-block;
+    background: #000;
+}
+.vruler > div {
+    display: inline-block;
+    background: #000;
+    transform: scale(-1);
+}
+.hruler .tickLabel {
+    position:relative;
+    top: -10px;
+    margin-left: 4px;
+    width: 1px;
+    height: 100%;
+    text-indent: 2px;
+    line-height: 20px;
+}
+.hruler .tickLabel:first-of-type {
+    margin-left: 0px;
+}
+.hruler .tickMajor {
+    margin-top: 19px;
+    margin-left: 4px;
+    width: 1px;
+    height: 6px;
+}
+.hruler .tickMinor {
+    margin-left: 4px;
+    width: 1px;
+    height: 4px;
+}
+
+.vruler .tickLabel {
+    position:relative;
+    top: 10px;
+    margin-left: 4px;
+    width: 1px;
+    height: 100%;
+    text-indent: 2px;
+    line-height: 20px;
+}
+.vruler .tickLabel:first-of-type {
+    margin-left: 0px;
+}
+.vruler .tickMajor {
+    position:relative;
+    top:2px;
+    margin-top: 19px;
+    margin-left: 4px;
+    width: 1px;
+    height: 6px;
+}
+.vruler .tickMinor {
+    margin-left: 4px;
+    width: 1px;
+    height: 4px;
+}
+
+#konvaContainer{
+    position:relative;
+    margin-left: 25px;
+    top:-40px;
+}
+
+.directionLabels{
+    display: flex; 
+    justify-content: center;
+    margin-bottom:10px;
+    font-weight: 500;
+}
+
+.directionLabels.vertical{
+    transform: rotate(270deg);   
+    font-weight: 500;
+}
+
+.form-check-label{
+    cursor: pointer;
+}
+
+#toggleControls label
+{
+    padding-right:20px;
+}
