@@ -15,9 +15,8 @@
 <body>
     <div class="row py-3 mx-3">
         <div class="col-md-2 div1">
-            <br />
-            <div style="display:inline-flex;align-items: center;">
-            <h4>Worktop Details</h4>&nbsp;&nbsp;&nbsp;<a href="" onclick="window.location.reload();">Reset</a></div>
+            <div style="display:flex;align-items:center;">
+            <h4>Worktop Details</h4>&nbsp;&nbsp;&nbsp;<a id="reset" href="" onclick="window.location.reload();">Reset</a></div>
             <!-- <div class="form-group">
                 <label for="fileInput" class="formLabel">Add Texture</label>
                 <input type="file" class="form-control textBoxes" id="fileInput">
@@ -43,20 +42,20 @@
 
             </div>
             <div class="form-group">
-                <label for="widthInput" class="formLabel">Enter Width</label>
-                <input type="number" class="form-control textBoxes" id="widthInput" value="2100">
+                <label for="widthInput" class="formLabel">Enter Length</label>
+                <input type="number" class="form-control textBoxes" id="lengthInput" value="2100">
             </div>
             <div class="form-group">
-                <label for="lengthInput" class="formLabel">Enter Length</label>
-                <input type="number" class="form-control textBoxes" id="lengthInput" value="900">
+                <label for="lengthInput" class="formLabel">Enter Depth</label>
+                <input type="number" class="form-control textBoxes" id="depthInput" value="900">
             </div>
             <!-- <div class="form-group">
                 <label for="thicknessInput" class="formLabel">Enter Thickness</label>
                 <input type="number" class="form-control textBoxes" id="thicknessInput" value="25">
             </div> -->
             <div class="form-group">
-                <label for="borderRadiusInput" class="formLabel">Curve</label>
-                <input type="number" class="form-control textBoxes" id="borderRadiusInput" value="200" max="250">
+                <label for="borderRadiusInput" class="formLabel">Corner Radius</label>
+                <!-- <input type="number" class="form-control textBoxes" id="borderRadiusInput" value="200" max="250">
                 <div class="row">
                     <div class="col-md-6">
                         <input class="form-check-input" type="checkbox" value="" id="backLeft" checked>
@@ -84,13 +83,73 @@
                             Front Right
                         </label>
                     </div>
+                </div> -->
+                <!-- --- -->
+                <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+                    <div class="col-md-9" >
+                        <label for="corner_bl" class="formLabel">Left Large Corner</label>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="leftLargeCorner" >
+                        </div>
+                    </div>
                 </div>
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col-md-6" >
+                        <label for="corner_fl">Front Left</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="number" class="form-control textBoxes" id="corner_fl" value="200" max="250">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col-md-6" >
+                        <label for="corner_bl">Back Left</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="number" class="form-control textBoxes" id="corner_bl" value="200" max="250">
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+                    <div class="col-md-9" >
+                        <label for="corner_bl" class="formLabel">Right Large Corner</label>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="rightLargeCorner" >
+                        </div>
+                    </div>
+                </div>          
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col-md-6">
+                        <label for="corner_fr">Front Right</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="number" class="form-control textBoxes" id="corner_fr" value="200" max="250">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col-md-6">
+                        <label for="corner_br">Back Right</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="number" class="form-control textBoxes" id="corner_br" value="200" max="250">
+                    </div>
+                </div>                               
             </div>
             <div class="form-group">
                 <label for="sinkRequiredSelect" class="formLabel">Sink Required</label>
                 <select class="form-control textBoxes" id="sinkRequiredSelect">
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="sinkBowlType" class="formLabel">Sink Bowl Type</label>
+                <select class="form-control textBoxes" id="sinkBowlTypeSelect">
+                    <option value="rightHB">Right hand Bowl</option>
+                    <option value="leftHB">Left Hand Bowl</option>               
                 </select>
             </div>
             <!-- <div class="form-group">
@@ -100,75 +159,43 @@
                     <option value="no">No</option>
                 </select>
             </div> -->
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="topInput" class="formLabel">Position from Back</label>
                 <input type="number" class="form-control textBoxes" id="topInput" value="" disabled>
                 <label for="leftInput" class="formLabel">Position from Left</label>
                 <input type="number" class="form-control textBoxes" id="leftInput" value="" disabled>
-            </div>
+            </div> -->
             <div class="form-group">
+                <label for="sinkOffSet" class="formLabel">Sink Offset</label>
+                <input type="number" class="form-control textBoxes" id="sinkOffSet" value="0" disabled>
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
                 <h5>Edging</h5>
                 <div class="row">
                     <div class="form-group col-md-6">
-                        <label class="formLabel">Left Edge</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="leftEdge" id="leftEdgeYes" checked>
-                            <label class="form-check-label" for="leftEdgeYes">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="leftEdge" id="leftEdgeNo">
-                            <label class="form-check-label" for="leftEdgeNo">
-                                No
-                            </label>
+                        <label>Left Edge</label>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="leftEdge" checked>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label class="formLabel">Back Edge</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="backEdge" id="backEdgeYes" checked>
-                            <label class="form-check-label" for="backEdgeYes">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="backEdge" id="backEdgeNo">
-                            <label class="form-check-label" for="backEdgeNo">
-                                No
-                            </label>
+                        <label>Right Edge</label>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="rightEdge" checked>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label class="formLabel">Right Edge</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="rightEdge" id="rightEdgeYes" checked>
-                            <label class="form-check-label" for="rightEdgeYes">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="rightEdge" id="rightEdgeNo">
-                            <label class="form-check-label" for="rightEdgeNo">
-                                No
-                            </label>
+                        <label>Front Edge</label>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="frontEdge" checked>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label class="formLabel">Front Edge</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="frontEdge" id="frontEdgeYes" checked>
-                            <label class="form-check-label" for="frontEdgeYes">
-                                Yes
-                            </label>
+                        <label>Back Edge</label>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="backEdge" checked>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="frontEdge" id="frontEdgeNo">
-                            <label class="form-check-label" for="frontEdgeNo">
-                                No
-                            </label>
-                        </div>
-                    </div>
+                    </div>                
                 </div>
 
             </div>
@@ -186,7 +213,7 @@
                         <div>
                             <label for="adjustView" class="form-label"><b>Adjust View</b> - <span
                                     id="percentValue"></span></label>
-                            <input type="range" class="form-range" min="1" max="10" step="1" value="5" id="adjustView"
+                            <input type="range" class="form-range" min="1" max="10" step="1" value="6" id="adjustView"
                                 onchange="loadAdjustViewLabel()">
                         </div>
                     </div>
